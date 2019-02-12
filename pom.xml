@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hive.package</groupId>
+  <artifactId>hive-Maven-project</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+        <fusion.version>2.2</fusion.version>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <!-- Hadoop Dependencies -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-client-hdfs</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-client-common</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-common</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-adk-client</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-adk-common</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-adk-security</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>fusion-adk-netty</artifactId>
+            <version>${fusion.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fusion</groupId>
+            <artifactId>wd-guava</artifactId>
+            <version>15.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+  
+</project>
